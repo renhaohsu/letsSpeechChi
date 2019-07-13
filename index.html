@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-hant">
+<head>
+	<meta charset="UTF-8">
+	<title>說給你聽</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+ 	<style>
+		body {background-color:#111; width: 50%; margin: auto;padding: 0;}
+		p {color: #ddd; font-family: '微軟正黑體'; font-size: 20px;}
+		html {width: 100%; margin: 0;padding: 0; overflow-x: hidden;}
+
+		@media screen and (max-width: 800px) {
+			body {width: 90%;}
+		}
+		a {
+    	text-decoration: none;
+			color: rgb(152, 255, 198)
+		}
+		a:active {
+			color: rgb(117, 186, 255)
+		}
+	</style>
+	<link rel="stylesheet" href="css/index.css">
+
+</head>
+<body>
+	
+	<p>
+		咒文：
+ 	<br>
+	<input type="text" name="text">
+	</p>
+	
+	<p>
+	<br>
+	<a href="#" class="say">詠唱╰( ͡° ͜ʖ ͡° )つ──☆*:・ﾟ</a>
+	<audio src="" class="speech" hidden></audio>
+
+	</p>
+	<!-- <iframe src="https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=zh-CN&q=%E5%93%88%E5%93%88%E5%93%88" width="200" height="200"></iframe> -->
+	<script>
+
+
+		document.querySelector('.say').addEventListener('click', function(e){
+			e.preventDefault();
+			var text = document.querySelector('input[name="text"]').value;
+			// text = encodeURIComponent(text);
+			console.log(text);
+			var words = new SpeechSynthesisUtterance(text);
+			window.speechSynthesis.speak(words)
+			
+			
+		})
+
+		// document.querySelector('.say').addEventListener('click', function(e){
+		// 	e.preventDefault();
+		// 	var text = document.querySelector('input[name="text"]').value;
+		// 	text = encodeURIComponent(text);
+		// 	console.log(text);
+		// 	var url = "https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=zh-CN&q=" + text + ""
+		// 	audio = document.querySelector('audio')
+		// 	audio.setAttribute('src', url)
+		// 	audio.play();
+
+		// 	iframe = document.querySelector('iframe')
+		// 	iframe.setAttribute('src', url)
+		// 	// audio.play();
+		// })
+	</script>
+	
+</body>
+</html>
