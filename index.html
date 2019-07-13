@@ -22,6 +22,14 @@
 		a:active {
 			color: rgb(117, 186, 255)
 		}
+		.say{
+			padding: 8px 37px 15px 40px;
+			border: 1px dashed rgb(220, 255, 123);
+			border-radius: 50px;
+		}
+		.say:hover{
+			cursor: pointer;
+		}
 		input {
 			font-size: 20px;
 			height: 150px;
@@ -56,14 +64,17 @@
 			let words = new SpeechSynthesisUtterance(word);
 			window.speechSynthesis.speak(words)
 		}
+		document.querySelector('.say').addEventListener('click', function(e){
+	
+			
+		})
 		sayFirst('不好意思').then(sayFirst('我手機音量忘了關'))
 			
 
 		document.querySelector('.say').addEventListener('click', function(e){
 			e.preventDefault();
 			var text = document.querySelector('input[name="text"]').value;
-			// text = encodeURIComponent(text);
-			console.log(text);
+			// console.log(text);
 			sayFirst(text)
 			
 			
