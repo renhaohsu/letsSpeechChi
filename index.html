@@ -13,7 +13,7 @@
 		html {width: 100%; margin: 0;padding: 0; overflow-x: hidden;}
 
 		@media screen and (max-width: 800px) {
-			body {width: 90%;}
+			body {width: 90%;font-family: '微軟正黑體';}
 		}
 		a {
     	text-decoration: none;
@@ -26,9 +26,15 @@
 			padding: 8px 37px 15px 40px;
 			border: 1px dashed rgb(220, 255, 123);
 			border-radius: 50px;
+			box-shadow: 3px 4px 5px 1px rgba(63, 24, 85, 0.603);
 		}
 		.say:hover{
 			cursor: pointer;
+		}
+		.say:active{
+			cursor: pointer;
+			padding: 7px 35px 13px 40px;
+			box-shadow: 0px 0px 0px 0px rgb(0, 0, 0);
 		}
 		input {
 			font-size: 20px;
@@ -38,6 +44,7 @@
 			border-radius: 15px;
 			padding: 0;
 			box-sizing: border-box;
+			font-family: '微軟正黑體';
 		}
 
 		.leftSpace {
@@ -60,22 +67,24 @@
 	
 	</p>
 	<script>
-		async function sayFirst(word){
+		async function sayThisWord(word){
 			let words = new SpeechSynthesisUtterance(word);
 			window.speechSynthesis.speak(words)
 		}
-		document.querySelector('.say').addEventListener('click', function(e){
-	
+		
+		document.addEventListener('click', function(e){
+			sayThisWord('不好意思').then(sayThisWord('我手機音量忘了關'))
 			
-		})
-		sayFirst('不好意思').then(sayFirst('我手機音量忘了關'))
-			
+		}, {once: true});
 
 		document.querySelector('.say').addEventListener('click', function(e){
 			e.preventDefault();
 			var text = document.querySelector('input[name="text"]').value;
-			// console.log(text);
-			sayFirst(text)
+			console.log(text);
+			if (text==""){
+				text="請輸入文字"
+			}
+			sayThisWord(text)
 			
 			
 		})
