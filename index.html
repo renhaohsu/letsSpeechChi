@@ -23,6 +23,7 @@
 			color: rgb(117, 186, 255)
 		}
 		input {
+			font-size: 20px;
 			height: 150px;
 			width: 90%;
 			margin-left: 5%;
@@ -35,8 +36,6 @@
 			margin-left: 7%;
 		}
 	</style>
-	<link rel="stylesheet" href="css/index.css">
-
 </head>
 <body>
 	
@@ -44,43 +43,32 @@
 		<span class="leftSpace"> 咒文：</span>
 	<br>
 	</p>
-	<input type="text" name="text">
+	<input type="text" name="text" placeholder="這 裡 是 要 念 的 句 子">
 	
 	<p>
 	<br>
 	<a href="#" class="say leftSpace">☝ 詠唱╰( ͡° ͜ʖ ͡° )つ──☆*:・ﾟ</a>
-	<audio src="" class="speech" hidden></audio>
-
+	
+	
 	</p>
-	<!-- <iframe src="https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=zh-CN&q=%E5%93%88%E5%93%88%E5%93%88" width="200" height="200"></iframe> -->
 	<script>
-
+		async function sayFirst(word){
+			let words = new SpeechSynthesisUtterance(word);
+			window.speechSynthesis.speak(words)
+		}
+		sayFirst('不好意思').then(sayFirst('我手機音量忘了關'))
+			
 
 		document.querySelector('.say').addEventListener('click', function(e){
 			e.preventDefault();
 			var text = document.querySelector('input[name="text"]').value;
 			// text = encodeURIComponent(text);
 			console.log(text);
-			var words = new SpeechSynthesisUtterance(text);
-			window.speechSynthesis.speak(words)
+			sayFirst(text)
 			
 			
 		})
 
-		// document.querySelector('.say').addEventListener('click', function(e){
-		// 	e.preventDefault();
-		// 	var text = document.querySelector('input[name="text"]').value;
-		// 	text = encodeURIComponent(text);
-		// 	console.log(text);
-		// 	var url = "https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=zh-CN&q=" + text + ""
-		// 	audio = document.querySelector('audio')
-		// 	audio.setAttribute('src', url)
-		// 	audio.play();
-
-		// 	iframe = document.querySelector('iframe')
-		// 	iframe.setAttribute('src', url)
-		// 	// audio.play();
-		// })
 	</script>
 	
 </body>
