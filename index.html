@@ -17,7 +17,7 @@
 		}
 		a {
     	text-decoration: none;
-			color: rgb(152, 255, 198)
+			color: rgb(152, 255, 198);
 		}
 		a:active {
 			color: rgb(117, 186, 255)
@@ -89,6 +89,20 @@
 			
 		})
 
+		function handleButtonRWD(){
+			let button = document.querySelector('.say')
+			if (window.innerWidth < 680) {				
+				// button.style.color = 'red'
+				button.innerText = "☝ 詠唱"
+			} else {
+				button.innerText = "☝ 詠唱╰( ͡° ͜ʖ ͡° )つ──☆*:・ﾟ"
+			}
+		}
+		
+		// 載入 縮放的事件
+		window.addEventListener("load", handleButtonRWD);
+		window.addEventListener("resize", handleButtonRWD);
+		
 	</script>
 	
 </body>
